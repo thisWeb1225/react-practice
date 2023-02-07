@@ -1,0 +1,10 @@
+.toggleThemeBtn {
+  position: absolute;
+  right: 48px;
+  top: 48px;
+  font-size: 2rem;
+}
+
+.toggleThemeBtn.dark {
+  color: #fff;
+}
