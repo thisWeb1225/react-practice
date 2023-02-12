@@ -9,6 +9,8 @@ const cardNumbers = [
   { num: 4, matched: false },
   { num: 5, matched: false },
   { num: 6, matched: false },
+  { num: 7, matched: false },
+  { num: 8, matched: false },
 ];
 
 export default function rfc() {
@@ -22,14 +24,24 @@ export default function rfc() {
       .sort(() => Math.random() - 0.5)
       .map((card) => ({ ...card, id: Math.random() }));
 
+    setChoiceOne(null);
+    setChoiceTwo(null);
     setCards(hasShuffledCards);
     setTurns(0);
   };
 
   // handle a choice
   const handleChoice = (card) => {
+    // avoid choice same card
+    if (card.id === choiceOne?.id) return;
+    if (card.matched) return;
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
   };
+
+  // start automatically
+  useEffect(() => {
+    shuffleCards();
+  }, []);
 
   // compare 2 selectd cards
   useEffect(() => {
@@ -45,15 +57,15 @@ export default function rfc() {
             }
           });
         });
-        rresetTurn();
+
+        resetTurn();
       } else {
-        console.log('do not match');
-        rresetTurn();
+        resetTurn();
       }
     }
   }, [choiceOne, choiceTwo]);
 
-  const rresetTurn = () => {
+  const resetTurn = () => {
     setChoiceOne(null);
     setChoiceTwo(null);
     setTurns((prevTurns) => prevTurns + 1);
@@ -68,7 +80,12 @@ export default function rfc() {
 
       <div className="memory__grid">
         {cards.map((card) => (
-          <SingleCard card={card} key={card.id}></SingleCard>
+          <SingleCard
+            card={card}
+            key={card.id}
+            handleChoice={handleChoice}
+            showed={card === choiceOne || card === choiceTwo || card.matched}
+          ></SingleCard>
         ))}
       </div>
     </div>

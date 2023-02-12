@@ -1,24 +1,31 @@
 .memory__card {
   position: relative;
   display: grid;
-  z-index: 2;
-}
-
-.memory__card-front {
-  color: #fff;
-  margin: auto;
-  width: 80px;
-  height: 80px;
-  display: grid;
   place-content: center;
-  background: #75c5f5;
-  z-index: 1;
+  border-radius: 10px;
+  width: 88px;
+  height: 88px;
+  background: linear-gradient(145deg, #ffffff, #e3e3e3);
+  box-shadow: 8px 8px 17px #ededed, -8px -8px 17px #fcfcfc;
+  border: 0px solid rgba(0, 0, 0, 0);
+  transition: 0.3s border;
 }
 
-.memory__card-back {
-  width: 80px;
-  height: 80px;
-  background: #1a89aa;
-  position: absolute;
-  z-index: 2;
+.memory__card:hover {
+  border: 1px solid #0098c9;
+}
+
+.memory__card:active {
+  background: linear-gradient(145deg, #d8d8d8, #ffffff);
+  box-shadow: 5px 5px 15px #e2e2e2, -5px -5px 15px #fefefe;
+}
+
+.memory__card--front {
+  color: #0098c9;
+  opacity: 0;
+  transition: 0.5s 1.2s ease-out;
+}
+
+.memory__card--front-show {
+  opacity: 1;
 }

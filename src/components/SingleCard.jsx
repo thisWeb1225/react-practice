@@ -1,16 +1,21 @@
 import React from 'react';
-import './singleCard.css';
+import './SingleCard.css';
 
-export default function singleCard({ card }) {
+export default function singleCard({ card, handleChoice, showed }) {
+  let className = showed ? 'memory__card--front-show' : 'memory__card--front';
+
+  const handleClick = (card) => {
+    handleChoice(card);
+  };
   return (
     <div
       className="memory__card"
       key={card.id}
       onClick={() => {
-        handleChoice(card);
+        handleClick(card);
       }}
     >
-      <div className="memory__card-front">{card.num}</div>
+      <div className={className}>{card.num}</div>
     </div>
   );
 }
