@@ -1,0 +1,24 @@
+.memory__card {
+  position: relative;
+  display: grid;
+  z-index: 2;
+}
+
+.memory__card-front {
+  color: #fff;
+  margin: auto;
+  width: 80px;
+  height: 80px;
+  display: grid;
+  place-content: center;
+  background: #75c5f5;
+  z-index: 1;
+}
+
+.memory__card-back {
+  width: 80px;
+  height: 80px;
+  background: #1a89aa;
+  position: absolute;
+  z-index: 2;
+}

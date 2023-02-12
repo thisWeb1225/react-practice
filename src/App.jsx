@@ -5,12 +5,14 @@ import DarkmodeLogin from './views/DarkmodeLogin';
 
 import MouseMoveAndClick from './views/MouseMoveAndClick';
 
+import MemoryBlock from './views/MemoryBlock';
+
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <div className="App">
-      <MouseMoveAndClick></MouseMoveAndClick>
+      <MemoryBlock></MemoryBlock>
     </div>
   );
 }
